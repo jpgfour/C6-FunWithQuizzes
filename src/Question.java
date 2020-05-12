@@ -51,12 +51,12 @@ public abstract class Question {
         for (Map.Entry<String, Boolean> answer : answers.entrySet()) {
             i++;
             if(answer.getValue()) {
-                System.out.println("true fired off");
+                //System.out.println("true fired off");
                 correctAnswerNumber.append(i);
             }
         }
-        System.out.println(correctAnswerNumber + " " + userAnswerNumberAsString);
-        return (userAnswerNumberAsString == correctAnswerNumber.toString());
+        //System.out.println(correctAnswerNumber + " " + userAnswerNumberAsString + " " + (userAnswerNumberAsString.equals(correctAnswerNumber.toString())));
+        return (userAnswerNumberAsString.equals(correctAnswerNumber.toString()));
     }
 
 }

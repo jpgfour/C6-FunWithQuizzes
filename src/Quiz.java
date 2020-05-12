@@ -8,6 +8,10 @@ public class Quiz {
     private boolean isMultipleChoice;
     private boolean isTrueFalse;
     private ArrayList<Question> listOfQuestions;
+    private Scanner input = new Scanner(System.in);
+    private String userAnswer;
+    private int rawScore;
+    private boolean scored = false;
 
     //constructors
     public Quiz(String name) {
@@ -67,13 +71,22 @@ public class Quiz {
     }
     //run quiz
     public void runQuiz() {
+        this.rawScore = 0;
         for (Question question : listOfQuestions) {
             question.askQuestion();
             question.displayAnswers();
-            Scanner userAnswer = new Scanner(System.in);
-            question.checkAnswer(userAnswer.toString());
+            userAnswer = input.nextLine();
+            if (question.checkAnswer(userAnswer)) {
+                this.rawScore++;
+                System.out.println("You got that one RIGHT!!");
+            } else {
+                System.out.println("That's so WRONG!");
+            }
         }
     }
-
-
+    //grade quiz
+    public void gradeQuiz() {
+        System.out.println("Your raw score was " + this.rawScore + " correct answers out of " + this.listOfQuestions.size() +
+                " total questions.\nYou scored " + this.rawScore/this.listOfQuestions.size()*100 + "%.");
+    }
 }
