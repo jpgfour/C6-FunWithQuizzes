@@ -10,7 +10,7 @@ public class Quiz {
     private ArrayList<Question> listOfQuestions;
     private Scanner input = new Scanner(System.in);
     private String userAnswer;
-    private int rawScore;
+    private int rawScore = 0;
     private boolean scored = false;
 
     //constructors
@@ -71,7 +71,6 @@ public class Quiz {
     }
     //run quiz
     public void runQuiz() {
-        this.rawScore = 0;
         for (Question question : listOfQuestions) {
             question.askQuestion();
             question.displayAnswers();
@@ -86,7 +85,8 @@ public class Quiz {
     }
     //grade quiz
     public void gradeQuiz() {
+        //System.out.println(100*this.rawScore/this.listOfQuestions.size());
         System.out.println("Your raw score was " + this.rawScore + " correct answers out of " + this.listOfQuestions.size() +
-                " total questions.\nYou scored " + this.rawScore/this.listOfQuestions.size()*100 + "%.");
+                " total questions.\nYou scored " + 100*this.rawScore/this.listOfQuestions.size() + "%.");
     }
 }

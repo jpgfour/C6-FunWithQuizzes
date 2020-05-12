@@ -6,7 +6,8 @@ public class QuizRunner {
 
     public static void main(String args[]) {
 
-        String quizRules = "For this quiz, please enter the numbers of all correct answers as consecutive characters.\n  " +
+        String quizRules = "For this quiz, please enter the numbers of all correct answers as consecutive characters.\n" +
+                "\n" +
                 "For example, if the question is \n" +
                 "\n" +
                 "Who was the first president of the United States?\n" +
@@ -16,7 +17,7 @@ public class QuizRunner {
                 "\n" +
                 "...your correct response would be '1'.  If the question was instead\n" +
                 "\n" +
-                "Who previously was President of the United States?\n " +
+                "Who previously was President of the United States?\n" +
                 "1. George Washington\n" +
                 "2. Abraham Lincoln\n" +
                 "3. David Ortiz\n" +
@@ -35,13 +36,20 @@ public class QuizRunner {
         testHM.put("Grise",true);
         testHM.put("Hernandez",false);
         //setup new MultipleChoice question
-        MultipleChoice testQuestionOne = new MultipleChoice("What's my name?", testHM);
+        MultipleChoice testQuestionOne = new MultipleChoice("What are my names?", testHM);
         //setup Array of Questions
         ArrayList<Question> testListOne = new ArrayList<>();
         //sneakily add a MultipleChoice into a Question ArrayList
         testListOne.add(testQuestionOne);
         //create a quiz
         Quiz testQuizOne = new Quiz("test quiz 1!!!","type = remove this",testListOne);
+        //create another question
+        HashMap<String, Boolean> testHM2 = new HashMap<String,Boolean>();
+        testHM2.put("True",true);
+        testHM2.put("False",false);
+        TrueFalse testQuestionTwo = new TrueFalse("True or False:  My middle name is Paul.",testHM2 );
+        //add 2nd question to quiz
+        testQuizOne.addQuestion(testQuestionTwo);
 
         //debugging answering
 //        testQOne.askQuestion();
